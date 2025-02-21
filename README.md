@@ -27,6 +27,6 @@ pnpm run build
 
 * 效果截图如下
 
-![](https://oss.dreamlove.top/i/2025/02/20/p6vhkh-2.png)
+![](.\README\p6vhkh-2.png)
 
-![](https://oss.dreamlove.top/i/2025/02/20/p99c65-2.png)
+![](.\README\p99c65-2.png)
