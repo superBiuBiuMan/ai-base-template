@@ -27,6 +27,6 @@ pnpm run build
 
 * 效果截图如下
 
-![](.\README\p6vhkh-2.png)
+![](p6vhkh-2.png)
 
-![](.\README\p99c65-2.png)
+![](p99c65-2.png)
