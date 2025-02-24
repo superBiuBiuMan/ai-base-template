@@ -36,7 +36,6 @@ const errorCloseStream = () => {
 };
 
 const scrollToBottomFn = useThrottleFn(() => {
-  console.log("scrollToBottomFn", chatScrollContainer.value);
   if (chatScrollContainer.value) {
     chatScrollContainer.value.scrollTo({
       top: chatContent.value?.clientHeight,
@@ -73,9 +72,6 @@ const addAssistantMessage = (text: string) => {
     error: false,
     loading: true,
   });
-  setTimeout(() => {
-    scrollToBottomFn();
-  }, 300);
 };
 //更新消息
 const updateMessage = (message: Partial<ChatMessage>) => {
@@ -84,9 +80,6 @@ const updateMessage = (message: Partial<ChatMessage>) => {
     currentSessionActiveMessage.value?.id as string,
     message
   );
-  setTimeout(() => {
-    scrollToBottomFn();
-  }, 300);
 };
 
 const sendMessage = () => {
@@ -192,6 +185,9 @@ const copyMessage = (text: string) => {
     });
 };
 
+const handleScroll = (mutations: MutationRecord[]) => {
+  scrollToBottomFn();
+};
 watch(
   () => props.messageList,
   () => {
@@ -278,7 +274,11 @@ watch(
                   : 'bg-gray-100 text-gray-800 rounded-tl-none border-gray-200',
               ]"
             >
-              <BubbleShow :text="message.text" :loading="message.loading" />
+              <BubbleShow
+                :text="message.text"
+                :loading="message.loading"
+                @dom-update="handleScroll"
+              />
               <div :class="['text-xs mt-1', 'text-gray-500']">
                 {{ formatTimeByMessage(message.dateTime) }}
               </div>
